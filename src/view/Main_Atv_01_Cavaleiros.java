@@ -1,7 +1,7 @@
 package view;
 
-import java.util.concurrent.Semaphore;
 import controller.Controller_Atv_01_Cavaleiros;
+import java.util.concurrent.Semaphore;
 
 public class Main_Atv_01_Cavaleiros 
 {
@@ -10,11 +10,11 @@ public class Main_Atv_01_Cavaleiros
 	{
 		int permissao = 4;
 		
-		Semaphore intersection = new Semaphore(permissao);
+		Semaphore semaforo = new Semaphore(permissao);
 		
 		for(int knight = 0; knight < 4; knight ++) 
 		{
-			Thread Tknight = new KnightController(knight, intersection);
+			Thread Tknight = new Controller_Atv_01_Cavaleiros(knight,semaforo);
 		    Tknight.start();
 		  
 		} 

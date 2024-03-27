@@ -8,16 +8,16 @@ public class Controller_Atv_01_Cavaleiros extends Thread {
 	}
 	
 	private int knight;
-	private Semaphore intersection;
+	private Semaphore semaforo;
 	private static boolean vv = false;
 	private static boolean T = true;
 	private static boolean P = true;
 	private static boolean Porta = true;
 
-	public void KnightController(int knight, Semaphore intersection) 
+	public Controller_Atv_01_Cavaleiros (int knight, Semaphore semaforo) 
 	{
 		this.knight = knight;
-		this.intersection = intersection;
+		this.semaforo = semaforo;
 	}
 	
 		
@@ -25,12 +25,12 @@ public class Controller_Atv_01_Cavaleiros extends Thread {
 			{
 				
 				try {
-					intersection.acquire();
+					semaforo.acquire();
 					 distancia();
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}finally {
-					intersection.release();
+					semaforo.release();
 				}
 				porta();
 	
