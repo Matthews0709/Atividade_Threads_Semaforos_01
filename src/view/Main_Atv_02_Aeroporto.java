@@ -1,7 +1,7 @@
 package view;
 
-import controller.Controller_Atv_02_Aeroporto;
 import java.util.concurrent.Semaphore;
+import controller.Controller_Atv_02_Aeroporto;
 
 public class Main_Atv_02_Aeroporto 
 {

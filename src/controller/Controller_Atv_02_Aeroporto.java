@@ -7,10 +7,10 @@ public class Controller_Atv_02_Aeroporto
 	private int Plane;
 	private Semaphore semaforo; 
 	
-	public Controller_Atv_02_Aeroporto(int Plane) 
+	public Controller_Atv_02_Aeroporto(int Plane, Semaphore semaforo) 
 	{
       this.Plane = Plane;
-      
+      this.semaforo = semaforo;
 	}
 	
 		public void run() 
@@ -21,8 +21,15 @@ public class Controller_Atv_02_Aeroporto
 			} catch (InterruptedException e) {
 			
 				e.printStackTrace();
-			}finally {
-				manobraS();
+			}
+				try {
+					semaforo.acquire();
+					manobraS();
+				}catch(InterruptedException ee){
+					
+					ee.printStackTrace();
+				}
+			finally {
 				semaforo.release();
 			}
 			
@@ -33,8 +40,14 @@ public class Controller_Atv_02_Aeroporto
 				}catch (InterruptedException e1) {
 				
 					e1.printStackTrace();
-				}finally {
+				}
+				try {
+					semaforo.acquire();
 					taxiagemS();
+				}catch(InterruptedException ee1){
+					
+					ee1.printStackTrace();
+				}finally {
 					semaforo.release();
 				}
 			
@@ -44,9 +57,15 @@ public class Controller_Atv_02_Aeroporto
 					} catch (InterruptedException e2) {
 			
 						e2.printStackTrace();
+					}
+					try {	
+						semaforo.acquire();
+						decolagemS();
+					}catch(InterruptedException ee2) {
+					
+						ee2.printStackTrace();
 					}finally {
 						semaforo.release();
-						decolagemS();
 					}
 					
 					try {
@@ -55,9 +74,15 @@ public class Controller_Atv_02_Aeroporto
 					} catch (InterruptedException e3) {
 					
 						e3.printStackTrace();
+					}
+					try {
+						semaforo.acquire();
+						afastamentoS();
+					}catch(InterruptedException ee3) {
+						
+						ee3.printStackTrace();
 					}finally {
 						semaforo.release();
-						afastamentoS();
 					}
 					
 		}

@@ -1,7 +1,7 @@
 package view;
 
-import controller.Controller_Atv_01_Cavaleiros;
 import java.util.concurrent.Semaphore;
+import controller.Controller_Atv_01_Cavaleiros;
 
 public class Main_Atv_01_Cavaleiros 
 {

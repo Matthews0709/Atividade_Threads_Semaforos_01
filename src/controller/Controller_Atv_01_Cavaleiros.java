@@ -3,9 +3,6 @@ package controller;
 import java.util.concurrent.Semaphore;
 
 public class Controller_Atv_01_Cavaleiros extends Thread {
-	public Controller_Atv_01_Cavaleiros() {
-		super();
-	}
 	
 	private int knight;
 	private Semaphore semaforo;
